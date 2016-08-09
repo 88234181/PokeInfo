@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PogoInfo</string>
+
+    <!--Server Status Fragment-->
+    <string name="server_status_fragment_text">Status</string>
+
+    <!--Pokemon Info Fragment-->
+    <string name="pokemon_info_fragment_text">Information</string>
+
+    <!--CP Calculation Fragment-->
+    <string name="iv_calculation_fragment_text">Calculation</string>
+</resources>
