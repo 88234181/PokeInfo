@@ -1,7 +1,7 @@
 package me.june.pokeinfo;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 /**
  * Created by Administrator on 2016/7/20.
  */
-public class PokemonInfoFragment extends Fragment {
+public class PokemonInfoFragment extends ListFragment {
 
 
     public PokemonInfoFragment(){

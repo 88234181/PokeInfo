@@ -1,5 +1,6 @@
 package me.june.pokeinfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,10 +9,10 @@ import java.util.List;
 public class Pokemon {
     private int id;
     private String name;
-    private int candyToEvolve;
-    private List<Skills> possibleSkills;
+    private String candyToEvolve;
+    private ArrayList<Skills> possibleSkills;
 
-    public Pokemon(int id, String name, int candyToEvolve, List<Skills> possibleSkills){
+    public Pokemon(int id, String name, String candyToEvolve, ArrayList<Skills> possibleSkills){
         this.id = id;
         this.name = name;
         this.candyToEvolve = candyToEvolve;
@@ -26,11 +27,11 @@ public class Pokemon {
         return name;
     }
 
-    public int getCandyToEvolve(){
+    public String getCandyToEvolve(){
         return candyToEvolve;
     }
 
-    public List<Skills> getPossibleSkills(){
+    public ArrayList<Skills> getPossibleSkills(){
         return possibleSkills;
     }
 }
