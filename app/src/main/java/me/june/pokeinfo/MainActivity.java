@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //Defines the number of tabs by setting appropriate fragment and tab name
     private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PokemonInfoFragment(), "Pokemon Info");
+        adapter.addFragment(new PokedexFragment(), "Pokemon Info");
         adapter.addFragment(new IVCalculationFragment(), "IV Calculator");
         viewPager.setAdapter(adapter);
     }
