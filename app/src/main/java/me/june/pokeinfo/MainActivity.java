@@ -19,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
+    public static final String KEY_POKEDEX_ID = "ID";
+    public static final String KEY_POKEDEX_IMAGE = "Imange";
+    public static final String KEY_POKEDEX_NAME = "name";
+    public static final String KEY_POKEDEX_TYPE1 = "type1";
+    public static final String KEY_POKEDEX_TYPE2 = "type2";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
