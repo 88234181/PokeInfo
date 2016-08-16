@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pokedex>
+    <pokemon>
+        <id>001</id>
+        <title>Someone Like You</title>
+        <artist>Adele</artist>
+        <duration>4:47</duration>
+        <plays>1662</plays>
+    </pokemon>
+</pokedex>

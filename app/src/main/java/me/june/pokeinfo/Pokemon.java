@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class Pokemon {
     private int id;
     private String name;
-    private String type;
+    private String type1;
+    private String type2;
     private String candyToEvolve;
     private ArrayList<Skills> possibleSkills;
 
@@ -61,8 +62,12 @@ public class Pokemon {
         return name;
     }
 
-    public String getType(){
-        return type;
+    public String getType1(){
+        return type1;
+    }
+
+    public String getType2(){
+        return type2;
     }
 
     public String getCandyToEvolve(){
@@ -74,7 +79,7 @@ public class Pokemon {
     }
 
     public String toString(){
-        return "ID: " + id + " Name: " + name + " Type: " + type + " Candy to evolve: " + candyToEvolve;
+        return "ID: " + id + " Name: " + name + " Type: " + type1 + " Candy to evolve: " + candyToEvolve;
     }
 
     public static int getAssociateDrawable(int id){
