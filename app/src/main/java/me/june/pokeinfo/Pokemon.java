@@ -6,18 +6,20 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/8/10.
  */
 public class Pokemon {
-    private int id;
+    private String id;
     private String name;
     private String type1;
     private String type2;
-    private String candyToEvolve;
+    private int candyToEvolve;
     private ArrayList<Skills> possibleSkills;
 
-    public Pokemon(int id, String name, String candyToEvolve, ArrayList<Skills> possibleSkills){
+    public Pokemon(String id, String name, String type1, String type2, int candyToEvolve){
         this.id = id;
         this.name = name;
+        this.type1 = type1;
+        this.type2 = type2;
         this.candyToEvolve = candyToEvolve;
-        this.possibleSkills = possibleSkills;
+
     }
 
     private static int[] POKEMON_DRAWABLES = {
@@ -54,7 +56,7 @@ public class Pokemon {
             R.drawable.pokedex149, R.drawable.pokedex150, R.drawable.pokedex151
     };
 
-    public int getId(){
+    public String getId(){
         return id;
     }
 
@@ -70,7 +72,7 @@ public class Pokemon {
         return type2;
     }
 
-    public String getCandyToEvolve(){
+    public int getCandyToEvolve(){
         return candyToEvolve;
     }
 

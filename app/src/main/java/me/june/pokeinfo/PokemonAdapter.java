@@ -31,9 +31,6 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon>{
             view = inflater.inflate(R.layout.pokedex_row, null);
         }
 
-        //create view holder to hold for a row
-        ViewHolder viewHolder;
-
         TextView pokedexId = (TextView) view.findViewById(R.id.pokedexId);
         ImageView pokedexImage = (ImageView) view.findViewById(R.id.pokedexImage);
         TextView pokedexName = (TextView) view.findViewById(R.id.pokedexName);
@@ -48,12 +45,4 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon>{
 
         return view;
     }
-
-    public static class ViewHolder{
-        TextView id;
-        TextView name;
-        ImageView pokemonIcon;
-    }
-
-
 }

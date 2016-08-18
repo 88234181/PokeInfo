@@ -1,6 +1,8 @@
 package me.june.pokeinfo;
 
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -11,6 +13,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -28,32 +33,43 @@ public class XMLParser {
         //
     }
 
-    //convert xml file to DOM structure
-    public Document getDomElement(String xml){
+    /**convert xml file to DOM structure
+     *
+     * @param context context of the activity since this is outside of activity
+     * @return Document
+     */
+    public Document getDomElement(Context context){
         Document doc = null;
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+        String file = "pokedex.xml";
         try{
-            DocumentBuilder db = dbf.newDocumentBuilder();
 
-            InputSource is = new InputSource();
-            is.setCharacterStream(new StringReader(xml));
-            doc = db.parse(is);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            InputStream raw = context.getAssets().open(file);
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(raw);
         } catch (ParserConfigurationException e){
             Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         } catch (SAXException e){
             Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         } catch (IOException e){
             Log.e("Error: ", e.getMessage());
+            e.printStackTrace();
             return null;
         }
 
         return doc;
     }
 
-    //get each xml child element value by passing element node name
+
+    /**get each xml child element value by passing element node name
+     *
+     * @param element
+     * @return
+     */
     public final String getElementValue(Node element){
         Node child;
 

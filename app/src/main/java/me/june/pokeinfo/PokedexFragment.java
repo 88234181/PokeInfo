@@ -23,6 +23,9 @@ public class PokedexFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
+
+
         //inflate the layout for this fragment
         return inflater.inflate(R.layout.pokedex_fragment, container, false);
     }
