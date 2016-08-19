@@ -6,27 +6,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2016/7/20.
  */
 public class PokedexFragment extends ListFragment {
 
+    private ArrayList<Pokemon> pokedex;
+    private PokemonAdapter pokemonAdapter;
 
     public PokedexFragment(){
 
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        PokedexDbHandler pokedexDbHandler = new PokedexDbHandler(getActivity().getBaseContext());
+        pokedex = pokedexDbHandler.getPokedex();
+
+        pokemonAdapter = new PokemonAdapter(getActivity(), pokedex);
+        setListAdapter(pokemonAdapter);
+
+        registerForContextMenu(getListView());
+
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-
-
-
-        //inflate the layout for this fragment
-        return inflater.inflate(R.layout.pokedex_fragment, container, false);
-    }
 }

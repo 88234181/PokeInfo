@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +40,7 @@ public class PokedexDbHandler extends SQLiteOpenHelper{
 
     public PokedexDbHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     //Creating database
@@ -49,6 +54,28 @@ public class PokedexDbHandler extends SQLiteOpenHelper{
                 + KEY_CANDY_TO_EVOLVE + " INTEGER" + ")";
 
         db.execSQL(CREATE_POKEDEX_TABLE);
+
+        db.close();
+
+        XMLParser parser = new XMLParser();
+        Document doc = parser.getDomElement(context);
+
+        NodeList pokemonNodeList = doc.getElementsByTagName("pokemon");
+
+        db = this.getWritableDatabase();
+
+        for(int i = 0; i < pokemonNodeList.getLength(); i++){
+            Element e = (Element) pokemonNodeList.item(i);
+            ContentValues values = new ContentValues();
+            values.put(KEY_ID, parser.getValue(e, "id"));
+            values.put(KEY_NAME, parser.getValue(e, "name"));
+            values.put(KEY_TYPE1, parser.getValue(e, "type1"));
+            values.put(KEY_TYPE2, parser.getValue(e, "type2"));
+            values.put(KEY_CANDY_TO_EVOLVE, parser.getValue(e, "candyToEvolve"));
+            db.insert(TABLE_POKEDEX, null, values);
+        }
+        db.close();
+
     }
 
     //upgrading database
@@ -102,8 +129,8 @@ public class PokedexDbHandler extends SQLiteOpenHelper{
      * get all the pokemons from the pokedex table
      * @return a list that contains all pokemon
      */
-    public List<Pokemon> getPokedex(){
-        List<Pokemon> pokedex = new ArrayList<>();
+    public ArrayList<Pokemon> getPokedex(){
+        ArrayList<Pokemon> pokedex = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + TABLE_POKEDEX;
 
@@ -119,6 +146,8 @@ public class PokedexDbHandler extends SQLiteOpenHelper{
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+        db.close();
         return pokedex;
     }
 

@@ -38,7 +38,7 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon>{
         TextView pokedexType2 = (TextView) view.findViewById(R.id.pokedexType2);
 
         pokedexId.setText(pokemon.getId());
-        pokedexImage.setImageResource(pokemon.getAssociateDrawable(pokemon.getId()));
+        pokedexImage.setImageResource(pokemon.getAssociateDrawable(Integer.parseInt(pokemon.getId())));
         pokedexName.setText(pokemon.getName());
         pokedexType1.setText(pokemon.getType1());
         pokedexType2.setText(pokemon.getType2());
